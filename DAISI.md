@@ -1,6 +1,6 @@
 # Super Resolution Image
 
-This Daisi is a simple application that generate a super resolution image from a low resolution image using [ESRGAN](https://arxiv.org/pdf/1809.00219.pdf). I have levaraged the facility of [Tensorflow Hub](https://tfhub.dev/) and this awesome blog from [Tensorflow](https://www.tensorflow.org/hub/tutorials/image_enhancing) to develop this application. This is just an implementation of the existing work.
+This Daisi is a simple application that generates a super-resolution image from a low-resolution image using [ESRGAN](https://arxiv.org/pdf/1809.00219.pdf). I have leveraged the facility of [Tensorflow Hub](https://tfhub.dev/) and this awesome blog from [Tensorflow](https://www.tensorflow.org/hub/tutorials/image_enhancing) to develop this application. This is just an implementation of the existing work.
 
 The technology I have used are:
 * [Tensorflow Hub](https://tfhub.dev/)
