@@ -15,23 +15,16 @@ import utils
 model = hub.load(config.SAVED_MODEL_PATH)
 
 def generate_super_resolution_image(image_path: str) -> np.array:
-    ''' This function will generate a super resolution image provided a valid PNG, JPEG, JPG image path.
+    ''' 
+    This function will generate a super resolution image provided a valid PNG, JPEG, JPG image path. 
+    This will return a numpy array.
         
-        Parameters:
-        -----------
-        - image_path: str
-        
-        Return:
-        -------
-        - np.array
-
-        Example:
-        -------
-        - You can convert the output of this function as follows
-        
-        from PIL import Image\n
-        array = generate_super_resolution_image(YOUR_IMAGE_PATH)\n
-        image = Image.fromarray(array)
+    :param image_path(str): Path of the image file
+    
+    :return np.array: Result will be a numpy array
+    Return:
+    -------
+    - np.array
     '''
     file_extension = Path(image_path).suffix
     if file_extension not in ['.png', '.jpg', '.jpeg']:
