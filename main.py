@@ -16,8 +16,7 @@ model = hub.load(config.SAVED_MODEL_PATH)
 
 def generate_super_resolution_image(image_path: str) -> np.array:
     ''' 
-    This function will generate a super resolution image provided a valid PNG, JPEG, JPG image path. 
-    This will return a numpy array.
+    This function will generate a super resolution image provided a valid PNG, JPEG, JPG image path. This will return a numpy array.
         
     :param image_path(str): Path of the image file
     
