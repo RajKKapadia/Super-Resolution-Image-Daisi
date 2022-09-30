@@ -9,9 +9,12 @@ The technology I have used are:
 
 ```python
 import pydaisi as pyd
+from PIL import Image
+
+image = Image.open(YOUR_IMAGE_PATH)
 
 super_resolution_image = pyd.Daisi('rajkkapadia/Super Resolution Image')
-result = super_resolution_image.generate_super_resolution_image(image_path=YOUR_IMAGE_PATH).value
+result = super_resolution_image.generate_super_resolution_image(image=image).value
 
 print(result)
 ```

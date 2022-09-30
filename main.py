@@ -1,7 +1,6 @@
 import uuid
 import os
-import time
-from pathlib import Path
+os.environ['TFHUB_DOWNLOAD_PROGRESS'] = 'True'
 
 from PIL import Image
 import numpy as np
@@ -14,18 +13,16 @@ import utils
 
 model = hub.load(config.SAVED_MODEL_PATH)
 
-def generate_super_resolution_image(image_path: str) -> np.array:
+def generate_super_resolution_image(image: Image) -> np.array:
     '''
     This function will generate a super resolution from a low resolution image, It will take a valid PNG, JPEG, JPG image path as input, and the output will be a numpy array.
         
-    :param image_path(str): Path of the image file
+    :param image(PIL.Image or Numpy.array): an image as either a PIL image, or a Numpy array
     
     :return np.array: Result will be a numpy array
     '''
-    file_extension = Path(image_path).suffix
-    if file_extension not in ['.png', '.jpg', '.jpeg']:
-        return 'Please pass only .png, .jpg, and .jpeg files.'
-    hr_image = utils.preprocess_image(image_path=image_path)
+    hr_image = utils.preprocess_image(image=image)
+    print(f'Input image shape - {hr_image.shape}')
     lr_image = utils.downscale_image(tf.squeeze(hr_image), scale=1)
     fake_image = model(lr_image)
     fake_image = tf.squeeze(fake_image)

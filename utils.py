@@ -1,4 +1,5 @@
 import os
+from typing import Type
 
 import tensorflow as tf
 from PIL import Image
@@ -7,7 +8,7 @@ import numpy as np
 import config
 
 
-def preprocess_image(image_path: str) -> tf.Tensor:
+def preprocess_image(image: Image) -> tf.Tensor:
   ''' Loads image from path and preprocesses to make it model ready
       
       Parameters:
@@ -16,7 +17,7 @@ def preprocess_image(image_path: str) -> tf.Tensor:
       Return:
       - tf.Tensor
   '''
-  hr_image = tf.image.decode_image(tf.io.read_file(image_path))
+  hr_image  = tf.keras.preprocessing.image.img_to_array(image)
   # If PNG, remove the alpha channel. The model only supports
   # images with 3 color channels.
   if hr_image.shape[-1] == 4:
