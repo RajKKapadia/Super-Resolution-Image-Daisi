@@ -25,5 +25,3 @@ from PIL import Image
 image = Image.fromarray(result)
 image.show()
 ```
-
-> Note: In case you pass any other file type than `.png, .jpg, or .jpeg` it will return a string.
