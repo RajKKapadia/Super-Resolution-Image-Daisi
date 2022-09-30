@@ -55,7 +55,7 @@ def st_ui():
                 caption='Original image',
                 width=300
             )
-        original_image = Image.open(uploaded_image)
+        original_image = PIL.Image.open(uploaded_image)
         super_image = generate_super_resolution_image(original_image)
         with col2:
             col2.image(
