@@ -2,7 +2,7 @@ import uuid
 import os
 os.environ['TFHUB_DOWNLOAD_PROGRESS'] = 'True'
 
-from PIL import Image
+import PIL
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -13,30 +13,19 @@ import utils
 
 model = hub.load(config.SAVED_MODEL_PATH)
 
-def generate_super_resolution_image(image: Image) -> np.ndarray:
+def generate_super_resolution_image(image: PIL.Image) -> np.ndarray:
     '''
     This function will generate a super resolution from a low resolution image, It will take a valid PNG, JPEG, JPG image path as input, and the output will be a numpy array.
         
     :param image(PIL.Image or Numpy.array): an image as either a PIL image, or a Numpy array
     
-    :return np.ndarray: Result will be a numpy array
+    :return PIL.Image: Returns a PIL Image objcet, you can use .save to save the image and .show to view the image
     '''
     hr_image = utils.preprocess_image(image=image)
-    print(f'Input image shape - {hr_image.shape}')
     lr_image = utils.downscale_image(tf.squeeze(hr_image), scale=1)
     fake_image = model(lr_image)
     fake_image = tf.squeeze(fake_image)
-    fake_image_path = os.path.join(
-        config.OUTPUT_DIR,
-        f'{uuid.uuid4()}.jpg'
-    )
-    utils.save_image(fake_image, fake_image_path)
-
-    image = Image.open(fp=fake_image_path)
-
-    image = np.array(image)
-
-    os.unlink(fake_image_path)
+    image = tf.keras.preprocessing.image.array_to_img(fake_image)
 
     return image
 
@@ -73,22 +62,6 @@ def st_ui():
                 image=super_image,
                 caption='Enhanced image',
                 width=300
-            )
-        fake_image = Image.fromarray(
-            obj=super_image
-        )
-        fake_image_path = os.path.join(
-            config.OUTPUT_DIR,
-            f'{uuid.uuid4()}.jpg'
-        )
-        fake_image.save(
-            fp=fake_image_path
-        )
-        with open(fake_image_path, 'rb') as f:
-            col2.download_button(
-                label='Download image',
-                data = f,
-                file_name=os.path.basename(fake_image_path)
             )
 
 if __name__ == '__main__':
