@@ -65,13 +65,8 @@ def st_ui():
                 caption='Original image',
                 width=300
             )
-        original_image_path = os.path.join(
-            config.INPUT_DIR,
-            f'{uuid.uuid4()}.{uploaded_image.name.split(".")[1]}'
-        )
-        with open(original_image_path, 'wb') as f:
-            f.write(uploaded_image.getbuffer())
-        super_image = generate_super_resolution_image(original_image_path)
+        original_image = Image.open(uploaded_image)
+        super_image = generate_super_resolution_image(original_image)
         with col2:
             col2.image(
                 image=super_image,
