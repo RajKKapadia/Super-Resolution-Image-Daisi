@@ -19,7 +19,7 @@ once you install all the required packages, you can run the following file to se
 
 > python test.py
 
-The image used in the `test.py` file is taken from [here](https://lh4.googleusercontent.com/-Anmw5df4gj0/AAAAAAAAAAI/AAAAAAAAAAc/6HxU8XFLnQE/photo.jpg64).
+The image used in the `test.py` file is taken from [here](https://lh4.googleusercontent.com/-Anmw5df4gj0/AAAAAAAAAAI/AAAAAAAAAAc/6HxU8XFLnQE/photo.jpg64) and [here](https://user-images.githubusercontent.com/12981474/40157448-eff91f06-5953-11e8-9a37-f6b5693fa03f.png).
 
 there is also a `Streamlit` UI as well, you can run the UI
 
