@@ -18,10 +18,9 @@ result = super_resolution_image.generate_super_resolution_image(image=image).val
 
 print(result)
 ```
-The result of the function call will a Numpy array, you can use it and convert it in to an image using the following piece of code.
+The result of the function call will be a PIL Image objcet, you can use .save to save the image and .show to view the image.
 
 ```python
 from PIL import Image
-image = Image.fromarray(result)
 image.show()
 ```
