@@ -1,6 +1,9 @@
 import os
 
-SAVED_MODEL_PATH = 'https://tfhub.dev/captain-pool/esrgan-tf2/1'
+SAVED_MODEL_PATH = os.path.join(
+    'model',
+    'esrgan-tf2_1'
+)
 
 CWD = os.getcwd()
 OUTPUT_DIR = os.path.join(
