@@ -13,13 +13,13 @@ import utils
 
 model = hub.load(config.SAVED_MODEL_PATH)
 
-def generate_super_resolution_image(image: Image):
+def generate_super_resolution_image(image: Image) -> np.ndarray:
     '''
     This function will generate a super resolution from a low resolution image, It will take a valid PNG, JPEG, JPG image path as input, and the output will be a numpy array.
         
     :param image(PIL.Image or Numpy.array): an image as either a PIL image, or a Numpy array
     
-    :return np.array: Result will be a numpy array
+    :return np.ndarray: Result will be a numpy array
     '''
     hr_image = utils.preprocess_image(image=image)
     print(f'Input image shape - {hr_image.shape}')
